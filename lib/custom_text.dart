@@ -1,5 +1,6 @@
 library custom_text;
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CustomText extends StatelessWidget {
@@ -11,6 +12,7 @@ class CustomText extends StatelessWidget {
   final Locale? locale;
   final FontWeight? fontWeight;
   final FontStyle? fontStyle;
+  final TextDecoration? textDecoration;
   final List<Shadow>? shadows;
 
   const CustomText(
@@ -22,6 +24,7 @@ class CustomText extends StatelessWidget {
       this.fontStyle,
       this.fontWeight,
       this.locale,
+      this.textDecoration,
       this.textOverflow,
       this.height,
       this.wordSpacing,
@@ -33,6 +36,7 @@ class CustomText extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
+          decoration: textDecoration ?? TextDecoration.none,
           color: color ?? Theme.of(context).textTheme.bodyText1!.color,
           fontFamily: fontFamily,
           fontSize: getadaptiveTextSize(context, size ?? 18),
