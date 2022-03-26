@@ -1,6 +1,5 @@
 library custom_text;
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CustomText extends StatelessWidget {
@@ -12,6 +11,7 @@ class CustomText extends StatelessWidget {
   final Locale? locale;
   final FontWeight? fontWeight;
   final FontStyle? fontStyle;
+  final EdgeInsets? padding;
   final TextDecoration? textDecoration;
   final List<Shadow>? shadows;
 
@@ -22,6 +22,7 @@ class CustomText extends StatelessWidget {
       this.fontFamily,
       this.size,
       this.fontStyle,
+      this.padding,
       this.fontWeight,
       this.locale,
       this.textDecoration,
@@ -33,20 +34,23 @@ class CustomText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
-          decoration: textDecoration ?? TextDecoration.none,
-          color: color ?? Theme.of(context).textTheme.bodyText1!.color,
-          fontFamily: fontFamily,
-          fontSize: getadaptiveTextSize(context, size ?? 18),
-          fontWeight: fontWeight,
-          fontStyle: fontStyle ?? FontStyle.normal,
-          locale: locale,
-          height: height,
-          overflow: textOverflow ?? TextOverflow.ellipsis,
-          shadows: shadows,
-          wordSpacing: wordSpacing),
+    return Padding(
+      padding: padding ?? EdgeInsets.zero,
+      child: Text(
+        text,
+        style: TextStyle(
+            decoration: textDecoration ?? TextDecoration.none,
+            color: color ?? Theme.of(context).textTheme.bodyText1!.color,
+            fontFamily: fontFamily,
+            fontSize: getadaptiveTextSize(context, size ?? 18),
+            fontWeight: fontWeight,
+            fontStyle: fontStyle ?? FontStyle.normal,
+            locale: locale,
+            height: height,
+            overflow: textOverflow ?? TextOverflow.ellipsis,
+            shadows: shadows,
+            wordSpacing: wordSpacing),
+      ),
     );
   }
 
