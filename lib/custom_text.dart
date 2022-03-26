@@ -35,7 +35,7 @@ class CustomText extends StatelessWidget {
       style: TextStyle(
           color: color ?? Theme.of(context).textTheme.bodyText1!.color,
           fontFamily: fontFamily,
-          fontSize: size ?? 18,
+          fontSize: getadaptiveTextSize(context, size ?? 18),
           fontWeight: fontWeight,
           fontStyle: fontStyle ?? FontStyle.normal,
           locale: locale,
@@ -44,5 +44,10 @@ class CustomText extends StatelessWidget {
           shadows: shadows,
           wordSpacing: wordSpacing),
     );
+  }
+
+  double getadaptiveTextSize(BuildContext context, double value) {
+    // 720 is medium screen height
+    return (value / 720) * MediaQuery.of(context).size.height;
   }
 }
