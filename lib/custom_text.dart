@@ -1,6 +1,7 @@
 library custom_text;
 
 import 'package:flutter/material.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class CustomText extends StatelessWidget {
   final String text;
@@ -36,13 +37,13 @@ class CustomText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: padding ?? EdgeInsets.zero,
-      child: Text(
+      child: AutoSizeText(
         text,
         style: TextStyle(
             decoration: textDecoration ?? TextDecoration.none,
             color: color ?? Theme.of(context).textTheme.bodyText1!.color,
             fontFamily: fontFamily,
-            fontSize: getadaptiveTextSize(context, size ?? 18),
+            fontSize: size ?? 18,
             fontWeight: fontWeight,
             fontStyle: fontStyle ?? FontStyle.normal,
             locale: locale,
@@ -54,8 +55,7 @@ class CustomText extends StatelessWidget {
     );
   }
 
-  double getadaptiveTextSize(BuildContext context, double value) {
-    // 720 is medium screen height
-    return (value / 720) * MediaQuery.of(context).size.height;
-  }
+  // double getadaptiveTextSize(BuildContext context, double value) {
+  //   // 720 is medium screen height
+  //   return (value / 720) * MediaQuery.of(context).size.height;
 }
