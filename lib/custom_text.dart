@@ -39,6 +39,7 @@ class CustomText extends StatelessWidget {
       padding: padding ?? EdgeInsets.zero,
       child: AutoSizeText(
         text,
+        minFontSize: 8,
         style: TextStyle(
             decoration: textDecoration ?? TextDecoration.none,
             color: color ?? Theme.of(context).textTheme.bodyText1!.color,
