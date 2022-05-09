@@ -43,7 +43,7 @@ class CustomText extends StatelessWidget {
             decoration: textDecoration ?? TextDecoration.none,
             // color: color ?? Theme.of(context).textTheme.bodyText1!.color,
             color: color ??
-                (Theme.of(context).brightness == Brightness.light
+                (Theme.of(context).brightness == Brightness.dark
                     ? Colors.white
                     : Colors.black),
             fontFamily: fontFamily,
