@@ -42,11 +42,11 @@ class CustomText extends StatelessWidget {
         minFontSize: 8,
         style: TextStyle(
             decoration: textDecoration ?? TextDecoration.none,
-            // color: color ?? Theme.of(context).textTheme.bodyText1!.color,
-            color: color ??
-                (Theme.of(context).brightness == Brightness.dark
-                    ? Colors.white
-                    : Colors.black),
+            color: color ?? Theme.of(context).textTheme.bodyText1!.color,
+            // color: color ??
+            //     (Theme.of(context).brightness == Brightness.dark
+            //         ? Colors.white
+            //         : Colors.black),
             fontFamily: fontFamily,
             fontSize: size ?? 18,
             fontWeight: fontWeight,
