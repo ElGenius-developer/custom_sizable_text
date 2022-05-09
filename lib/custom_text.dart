@@ -1,7 +1,7 @@
 library custom_text;
 
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class CustomText extends StatelessWidget {
   final String text;
@@ -41,7 +41,11 @@ class CustomText extends StatelessWidget {
         text,
         style: TextStyle(
             decoration: textDecoration ?? TextDecoration.none,
-            color: color ?? Theme.of(context).textTheme.bodyText1!.color,
+            // color: color ?? Theme.of(context).textTheme.bodyText1!.color,
+            color: color ??
+                (Theme.of(context).brightness == Brightness.light
+                    ? Colors.white
+                    : Colors.black),
             fontFamily: fontFamily,
             fontSize: size ?? 18,
             fontWeight: fontWeight,
