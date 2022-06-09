@@ -1,11 +1,10 @@
 library custom_text;
 
-import 'dart:html';
-
+ 
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
-Enum TextType {autoSized, normal}
+enum TextType {autoSized, normal}
 class CustomText extends StatelessWidget {
   final String text;
   final String? fontFamily;
@@ -20,7 +19,7 @@ class CustomText extends StatelessWidget {
   final List<Shadow>? shadows;
   final TextType? textType;
 
-  const CustomText(
+    const CustomText(
       {Key? key,
       required this.text,
       this.color,
@@ -46,16 +45,16 @@ class CustomText extends StatelessWidget {
       AutoSizeText(
         text,
         minFontSize: 8,
-        style: _textStyle
+        style: _textStyle(context)
       ):
       Text(text , 
-      style : _textStyle
+      style : _textStyle(context)
       )
       ,
     );
   }
 
-  final _textStyle = TextStyle(
+    _textStyle(BuildContext context) => TextStyle(
             decoration: textDecoration ?? TextDecoration.none,
             color: color ?? Theme.of(context).textTheme.bodyText1!.color,
             fontFamily: fontFamily,
