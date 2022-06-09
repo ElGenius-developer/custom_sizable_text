@@ -1,8 +1,11 @@
 library custom_text;
 
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
+Enum TextType {autoSized, normal}
 class CustomText extends StatelessWidget {
   final String text;
   final String? fontFamily;
@@ -15,6 +18,7 @@ class CustomText extends StatelessWidget {
   final EdgeInsets? padding;
   final TextDecoration? textDecoration;
   final List<Shadow>? shadows;
+  final TextType? textType;
 
   const CustomText(
       {Key? key,
@@ -30,6 +34,7 @@ class CustomText extends StatelessWidget {
       this.textOverflow,
       this.height,
       this.wordSpacing,
+      this.textType = TextType.autoSized,
       this.shadows})
       : super(key: key);
 
@@ -37,16 +42,22 @@ class CustomText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: padding ?? EdgeInsets.zero,
-      child: AutoSizeText(
+      child:  textType == TextType.autoSized ? 
+      AutoSizeText(
         text,
         minFontSize: 8,
-        style: TextStyle(
+        style: _textStyle
+      ):
+      Text(text , 
+      style : _textStyle
+      )
+      ,
+    );
+  }
+
+  final _textStyle = TextStyle(
             decoration: textDecoration ?? TextDecoration.none,
             color: color ?? Theme.of(context).textTheme.bodyText1!.color,
-            // color: color ??
-            //     (Theme.of(context).brightness == Brightness.dark
-            //         ? Colors.white
-            //         : Colors.black),
             fontFamily: fontFamily,
             fontSize: size ?? 18,
             fontWeight: fontWeight,
@@ -55,12 +66,6 @@ class CustomText extends StatelessWidget {
             height: height,
             overflow: textOverflow ?? TextOverflow.ellipsis,
             shadows: shadows,
-            wordSpacing: wordSpacing),
-      ),
-    );
-  }
+            wordSpacing: wordSpacing);
 
-  // double getadaptiveTextSize(BuildContext context, double value) {
-  //   // 720 is medium screen height
-  //   return (value / 720) * MediaQuery.of(context).size.height;
-}
+ }
