@@ -18,6 +18,7 @@ class CustomText extends StatelessWidget {
   final TextDecoration? textDecoration;
   final List<Shadow>? shadows;
   final TextType? textType;
+  final TextAlign? textAlign;
 
     const CustomText(
       {Key? key,
@@ -34,6 +35,7 @@ class CustomText extends StatelessWidget {
       this.height,
       this.wordSpacing,
       this.textType = TextType.autoSized,
+        this.textAlign = TextAlign.center,
       this.shadows})
       : super(key: key);
 
@@ -45,10 +47,14 @@ class CustomText extends StatelessWidget {
       AutoSizeText(
         text,
         minFontSize: 8,
-        style: _textStyle(context)
+        style: _textStyle(context),
+        softWrap: true,
+        textAlign:textAlign ,
       ):
       Text(text , 
-      style : _textStyle(context)
+      style : _textStyle(context),
+              softWrap: true,
+        textAlign:textAlign ,
       )
       ,
     );
@@ -59,6 +65,7 @@ class CustomText extends StatelessWidget {
             color: color ?? Theme.of(context).textTheme.bodyText1!.color,
             fontFamily: fontFamily,
             fontSize: size ?? 18,
+
             fontWeight: fontWeight,
             fontStyle: fontStyle ?? FontStyle.normal,
             locale: locale,
