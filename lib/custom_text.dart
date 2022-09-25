@@ -41,6 +41,7 @@ class CustomText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+ textAlign=  Localizations.localeOf(context).languageCode=='ar'?TextAlign.right:TextAlign.left;
     return Padding(
       padding: padding ?? EdgeInsets.zero,
       child:  textType == TextType.autoSized ? 
