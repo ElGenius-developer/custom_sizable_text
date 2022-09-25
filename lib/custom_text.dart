@@ -5,7 +5,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 
 enum TextType { autoSized, normal }
 
-class CustomText extends StatefulWidget {
+class CustomText extends StatelessWidget {
   final String text;
   final String? fontFamily;
   final Color? color;
@@ -35,57 +35,41 @@ class CustomText extends StatefulWidget {
       this.height,
       this.wordSpacing,
       this.textType = TextType.autoSized,
-      this.textAlign,
+      this.textAlign = TextAlign.left,
       this.shadows})
       : super(key: key);
 
   @override
-  State<CustomText> createState() => _CustomTextState();
-}
-
-class _CustomTextState extends State<CustomText> {
-  TextAlign? _textAlign;
-  @override
-  void initState() {
-    widget.textAlign != null
-        ? _textAlign = widget.textAlign
-        : _textAlign = Localizations.localeOf(context).languageCode == 'ar'
-            ? TextAlign.right
-            : TextAlign.left;
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: widget.padding ?? EdgeInsets.zero,
-      child: widget.textType == TextType.autoSized
+      padding: padding ?? EdgeInsets.zero,
+      child: textType == TextType.autoSized
           ? AutoSizeText(
-              widget.text,
+              text,
               minFontSize: 8,
               style: _textStyle(context),
               softWrap: true,
-              textAlign: widget.textAlign,
+              textAlign: textAlign,
             )
           : Text(
-              widget.text,
+              text,
               style: _textStyle(context),
               softWrap: true,
-              textAlign: _textAlign,
+              textAlign: textAlign,
             ),
     );
   }
 
   _textStyle(BuildContext context) => TextStyle(
-      decoration: widget.textDecoration ?? TextDecoration.none,
-      color: widget.color ?? Theme.of(context).textTheme.bodyText1!.color,
-      fontFamily: widget.fontFamily,
-      fontSize: widget.size ?? 18,
-      fontWeight: widget.fontWeight,
-      fontStyle: widget.fontStyle ?? FontStyle.normal,
-      locale: widget.locale,
-      height: widget.height,
-      overflow: widget.textOverflow ?? TextOverflow.ellipsis,
-      shadows: widget.shadows,
-      wordSpacing: widget.wordSpacing);
+      decoration: textDecoration ?? TextDecoration.none,
+      color: color ?? Theme.of(context).textTheme.bodyText1!.color,
+      fontFamily: fontFamily,
+      fontSize: size ?? 18,
+      fontWeight: fontWeight,
+      fontStyle: fontStyle ?? FontStyle.normal,
+      locale: locale,
+      height: height,
+      overflow: textOverflow ?? TextOverflow.ellipsis,
+      shadows: shadows,
+      wordSpacing: wordSpacing);
 }
