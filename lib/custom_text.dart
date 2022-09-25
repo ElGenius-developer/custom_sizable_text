@@ -1,10 +1,11 @@
 library custom_text;
 
- 
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
-enum TextType {autoSized, normal}
+enum TextType { autoSized, normal }
+
+// ignore: must_be_immutable
 class CustomText extends StatelessWidget {
   final String text;
   final String? fontFamily;
@@ -18,9 +19,9 @@ class CustomText extends StatelessWidget {
   final TextDecoration? textDecoration;
   final List<Shadow>? shadows;
   final TextType? textType;
-  final TextAlign? textAlign;
+  TextAlign? textAlign;
 
-    const CustomText(
+  CustomText(
       {Key? key,
       required this.text,
       this.color,
@@ -35,44 +36,44 @@ class CustomText extends StatelessWidget {
       this.height,
       this.wordSpacing,
       this.textType = TextType.autoSized,
-        this.textAlign = TextAlign.center,
+      this.textAlign = TextAlign.center,
       this.shadows})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
- textAlign=  Localizations.localeOf(context).languageCode=='ar'?TextAlign.right:TextAlign.left;
+    textAlign = Localizations.localeOf(context).languageCode == 'ar'
+        ? TextAlign.right
+        : TextAlign.left;
     return Padding(
       padding: padding ?? EdgeInsets.zero,
-      child:  textType == TextType.autoSized ? 
-      AutoSizeText(
-        text,
-        minFontSize: 8,
-        style: _textStyle(context),
-        softWrap: true,
-        textAlign:textAlign ,
-      ):
-      Text(text , 
-      style : _textStyle(context),
+      child: textType == TextType.autoSized
+          ? AutoSizeText(
+              text,
+              minFontSize: 8,
+              style: _textStyle(context),
               softWrap: true,
-        textAlign:textAlign ,
-      )
-      ,
+              textAlign: textAlign,
+            )
+          : Text(
+              text,
+              style: _textStyle(context),
+              softWrap: true,
+              textAlign: textAlign,
+            ),
     );
   }
 
-    _textStyle(BuildContext context) => TextStyle(
-            decoration: textDecoration ?? TextDecoration.none,
-            color: color ?? Theme.of(context).textTheme.bodyText1!.color,
-            fontFamily: fontFamily,
-            fontSize: size ?? 18,
-
-            fontWeight: fontWeight,
-            fontStyle: fontStyle ?? FontStyle.normal,
-            locale: locale,
-            height: height,
-            overflow: textOverflow ?? TextOverflow.ellipsis,
-            shadows: shadows,
-            wordSpacing: wordSpacing);
-
- }
+  _textStyle(BuildContext context) => TextStyle(
+      decoration: textDecoration ?? TextDecoration.none,
+      color: color ?? Theme.of(context).textTheme.bodyText1!.color,
+      fontFamily: fontFamily,
+      fontSize: size ?? 18,
+      fontWeight: fontWeight,
+      fontStyle: fontStyle ?? FontStyle.normal,
+      locale: locale,
+      height: height,
+      overflow: textOverflow ?? TextOverflow.ellipsis,
+      shadows: shadows,
+      wordSpacing: wordSpacing);
+}
