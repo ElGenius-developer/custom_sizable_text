@@ -35,7 +35,7 @@ class CustomText extends StatelessWidget {
       this.height,
       this.wordSpacing,
       this.textType = TextType.autoSized,
-      this.textAlign = TextAlign.left,
+      this.textAlign = TextAlign.center,
       this.shadows})
       : super(key: key);
 
