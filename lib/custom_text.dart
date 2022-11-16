@@ -35,7 +35,7 @@ class CustomText extends StatelessWidget {
       this.height,
       this.wordSpacing,
       this.textType = TextType.autoSized,
-      this.textAlign = TextAlign.center,
+      this.textAlign,
       this.shadows})
       : super(key: key);
 
@@ -49,13 +49,21 @@ class CustomText extends StatelessWidget {
               minFontSize: 8,
               style: _textStyle(context),
               softWrap: true,
-              textAlign: textAlign,
+              textAlign: textAlign != null
+                  ? textAlign
+                  : Localizations.localeOf(context).languageCode == 'ar'
+                      ? TextAlign.right
+                      : TextAlign.left,
             )
           : Text(
               text,
               style: _textStyle(context),
               softWrap: true,
-              textAlign: textAlign,
+              textAlign: textAlign != null
+                  ? textAlign
+                  : Localizations.localeOf(context).languageCode == 'ar'
+                      ? TextAlign.right
+                      : TextAlign.left,
             ),
     );
   }
