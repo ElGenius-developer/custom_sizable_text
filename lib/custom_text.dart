@@ -15,6 +15,7 @@ class CustomText extends StatelessWidget {
   final FontWeight? fontWeight;
   final FontStyle? fontStyle;
   final EdgeInsets? padding;
+  final TextStyle? textStyle;
   final TextDecoration? textDecoration;
   final List<Shadow>? shadows;
   final TextType? textType;
@@ -27,6 +28,7 @@ class CustomText extends StatelessWidget {
       this.fontFamily,
       this.size,
       this.fontStyle,
+      this.textStyle,
       this.padding,
       this.fontWeight,
       this.locale,
@@ -47,23 +49,21 @@ class CustomText extends StatelessWidget {
           ? AutoSizeText(
               text,
               minFontSize: 8,
-              style: _textStyle(context),
+              style: textStyle ?? _textStyle(context),
               softWrap: true,
-              textAlign: textAlign != null
-                  ? textAlign
-                  : Localizations.localeOf(context).languageCode == 'ar'
+              textAlign: textAlign ??
+                  (Localizations.localeOf(context).languageCode == 'ar'
                       ? TextAlign.right
-                      : TextAlign.left,
+                      : TextAlign.left),
             )
           : Text(
               text,
-              style: _textStyle(context),
+              style: textStyle ?? _textStyle(context),
               softWrap: true,
-              textAlign: textAlign != null
-                  ? textAlign
-                  : Localizations.localeOf(context).languageCode == 'ar'
+              textAlign: textAlign ??
+                  (Localizations.localeOf(context).languageCode == 'ar'
                       ? TextAlign.right
-                      : TextAlign.left,
+                      : TextAlign.left),
             ),
     );
   }
