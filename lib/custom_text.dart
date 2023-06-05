@@ -71,6 +71,7 @@ class CustomText extends StatelessWidget {
   _textStyle(BuildContext context) => TextStyle(
       decoration: textDecoration ?? TextDecoration.none,
       color: color ?? Theme.of(context).textTheme.bodyText1!.color,
+      decorationColor:color ?? Theme.of(context).textTheme.bodyText1!.color,
       fontFamily: fontFamily,
       fontSize: size ?? 18,
       fontWeight: fontWeight,
