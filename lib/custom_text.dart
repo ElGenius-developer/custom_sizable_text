@@ -1,7 +1,7 @@
 library custom_text;
 
-import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/material.dart';
 
 enum TextType { autoSized, normal }
 
@@ -9,7 +9,7 @@ class CustomText extends StatelessWidget {
   final String text;
   final String? fontFamily;
   final Color? color;
-  final double? size, height, wordSpacing;
+  final double? size, height, wordSpacing, minFontSize, maxFontSize, textScaleFactor;
   final TextOverflow? textOverflow;
   final Locale? locale;
   final FontWeight? fontWeight;
@@ -20,9 +20,15 @@ class CustomText extends StatelessWidget {
   final List<Shadow>? shadows;
   final TextType? textType;
   final TextAlign? textAlign;
+  final int? maxLines;
+  final TextDirection? textDirection;
+
+  final List<double>? presetFontSizes;
+
+  final TextWidthBasis? textWidthBasis;
 
   const CustomText(
-      {Key? key,
+      {super.key,
       required this.text,
       this.color,
       this.fontFamily,
@@ -38,8 +44,14 @@ class CustomText extends StatelessWidget {
       this.wordSpacing,
       this.textType = TextType.autoSized,
       this.textAlign,
-      this.shadows})
-      : super(key: key);
+      this.shadows,
+      this.minFontSize,
+      this.maxFontSize,
+      this.textScaleFactor,
+      this.maxLines,
+      this.textDirection,
+      this.presetFontSizes,
+      this.textWidthBasis});
 
   @override
   Widget build(BuildContext context) {
@@ -48,32 +60,37 @@ class CustomText extends StatelessWidget {
       child: textType == TextType.autoSized
           ? AutoSizeText(
               text,
-              minFontSize: 8,
+              minFontSize: minFontSize ?? 10,
+              maxFontSize: maxFontSize ?? 25,
+              maxLines: maxLines,
+              presetFontSizes: presetFontSizes,
+              textScaleFactor: textScaleFactor,
+              overflow: textOverflow,
+              textDirection: textDirection ?? TextDirection.ltr,
               style: textStyle ?? _textStyle(context),
               softWrap: true,
-              textAlign: textAlign ??
-                  (Localizations.localeOf(context).languageCode == 'ar'
-                      ? TextAlign.right
-                      : TextAlign.left),
+              textAlign: textAlign ?? (Localizations.localeOf(context).languageCode == 'ar' ? TextAlign.right : TextAlign.left),
             )
           : Text(
               text,
               style: textStyle ?? _textStyle(context),
               softWrap: true,
-              textAlign: textAlign ??
-                  (Localizations.localeOf(context).languageCode == 'ar'
-                      ? TextAlign.right
-                      : TextAlign.left),
+              overflow: textOverflow,
+              textDirection: textDirection,
+              maxLines: maxLines,
+              textScaler: TextScaler.linear(textScaleFactor ?? 1),
+              textWidthBasis: textWidthBasis,
+              textAlign: textAlign ?? (Localizations.localeOf(context).languageCode == 'ar' ? TextAlign.right : TextAlign.left),
             ),
     );
   }
 
   _textStyle(BuildContext context) => TextStyle(
       decoration: textDecoration ?? TextDecoration.none,
-      color: color ?? Theme.of(context).textTheme.bodyText1!.color,
-      decorationColor:color ?? Theme.of(context).textTheme.bodyText1!.color,
+      color: color ?? Theme.of(context).textTheme.bodyLarge!.color,
+      decorationColor: color ?? Theme.of(context).textTheme.bodyLarge!.color,
       fontFamily: fontFamily,
-      fontSize: size ?? 18,
+      fontSize: size ?? 17,
       fontWeight: fontWeight,
       fontStyle: fontStyle ?? FontStyle.normal,
       locale: locale,
