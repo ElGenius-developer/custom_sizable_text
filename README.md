@@ -71,4 +71,3 @@ SizedBox(
 
 [example demo](https://github.com/ElGenius-developer/custom_sizable_text/)
 
-To use second method run: `flutter run --dart-define=method=2`
