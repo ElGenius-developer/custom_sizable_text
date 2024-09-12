@@ -69,5 +69,5 @@ SizedBox(
 
 ### Example
 
-[example demo](https://github.com/ElGenius-developer/custom_sizable_text/)
+[example demo](https://github.com/ElGenius-developer/custom_sizable_text/tree/main/example/custom_text_example/lib)
 
