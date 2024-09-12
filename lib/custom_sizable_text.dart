@@ -3,37 +3,75 @@ library custom_sizable_text;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
+/// [TextType] is an enum that allows you to make text not sizable by change [textType]
 enum TextType { autoSized, normal }
 
+/// [CustomText] is a widget that simplifies the text widget and make it flexible and auto sized.
+
 class CustomText extends StatelessWidget {
+  /// the String text that will be displayed
   final String text;
+
+  /// - [fontFamily] is the font family of the text. like(Roboto, Poppins).
   final String? fontFamily;
+
+  /// - [color] is the color of the text.
   final Color? color;
-  final double? size,
-      height,
-      wordSpacing,
-      minFontSize,
-      maxFontSize,
-      textScaleFactor;
+
+  /// - [size] is the font size of the text.
+  final double? size;
+
+  /// - [height] is the height of the text.
+  final double? height;
+
+  final double? wordSpacing;
+
+  /// - [minFontSize] is the minimum font size of the text.
+  final double? minFontSize;
+
+  /// - [maxFontSize] is the maximum font size of the text.
+  final double? maxFontSize;
+
+  /// - [textScaleFactor] is the scale factor of the text.
+  final double? textScaleFactor;
+
+  /// - [textOverflow] is the overflow of the text - TextOverflow.ellipsis,  TextOverflow.clip,  TextOverflow.fade etc.
   final TextOverflow? textOverflow;
   final Locale? locale;
+
+  /// - [fontWeight] is the weight of the text - FontWeight.bold,  FontWeight.normal etc.
   final FontWeight? fontWeight;
+
+  /// - [fontStyle] is the style of the text - FontStyle.italic,  FontStyle.normal etc.
   final FontStyle? fontStyle;
+
+  /// - [padding] is the padding of the text - space around the text.
   final EdgeInsets? padding;
+
+  /// - [textStyle] is the style of the text like(color, fontSize, fontWeight) etc.
   final TextStyle? textStyle;
   final TextDecoration? textDecoration;
   final List<Shadow>? shadows;
+
+  /// - [textType] is the type of the text - TextType.autoSized,  TextType.normal etc.
   final TextType? textType;
+
+  /// - [textAlign] is the alignment of the text - TextAlign.leftCenter,  TextAlign.rightCenter,  TextAlign.center etc.
   final TextAlign? textAlign;
+
+  /// - [maxLines] is the max lines that text can fit on.
   final int? maxLines;
+
+  /// - [textDirection] is the direction of the text - TextDirection.ltr,  TextDirection.rtl etc.
   final TextDirection? textDirection;
 
+  /// - [presetFontSizes] is the preset font sizes of the text.
   final List<double>? presetFontSizes;
 
+  /// - [textWidthBasis] is the width basis of the text.
   final TextWidthBasis? textWidthBasis;
-  
-  const CustomText(
-    this.text,
+
+  const CustomText(this.text,
       {super.key,
       this.color,
       this.fontFamily,
@@ -74,10 +112,7 @@ class CustomText extends StatelessWidget {
               textDirection: textDirection ?? TextDirection.ltr,
               style: textStyle ?? _textStyle(context),
               softWrap: true,
-              textAlign: textAlign ??
-                  (Localizations.localeOf(context).languageCode == 'ar'
-                      ? TextAlign.right
-                      : TextAlign.left),
+              textAlign: textAlign ?? (Localizations.localeOf(context).languageCode == 'ar' ? TextAlign.right : TextAlign.left),
             )
           : Text(
               text,
@@ -88,10 +123,7 @@ class CustomText extends StatelessWidget {
               maxLines: maxLines,
               textScaler: TextScaler.linear(textScaleFactor ?? 1),
               textWidthBasis: textWidthBasis,
-              textAlign: textAlign ??
-                  (Localizations.localeOf(context).languageCode == 'ar'
-                      ? TextAlign.right
-                      : TextAlign.left),
+              textAlign: textAlign ?? (Localizations.localeOf(context).languageCode == 'ar' ? TextAlign.right : TextAlign.left),
             ),
     );
   }
