@@ -8,15 +8,9 @@ By Using [auto_size_text](https://pub.dev/packages/auto_size_text) allowed text 
 Add package to pubspec.yaml
 ``` yaml
     dependencies:
-      custom_text:
-        git:
-          url: https://github.com/ElGenius-developer/custom_text
+      custom_sizable_text: ^1.1.5
 ```
 ## Usage
-
-[//]: # (TODO: Include short and useful examples for package users. Add longer examples)
-
-[//]: # (to `/example` folder. )
 
 ```dart
     Widget createText(String message,{Color? color})=>

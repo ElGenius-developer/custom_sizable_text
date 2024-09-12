@@ -1,3 +1,3 @@
-## 0.0.1
+##  1.1.5
 
-* TODO: Describe initial release.
+* use auto_size_text to make text sizable.
