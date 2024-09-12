@@ -9,7 +9,12 @@ class CustomText extends StatelessWidget {
   final String text;
   final String? fontFamily;
   final Color? color;
-  final double? size, height, wordSpacing, minFontSize, maxFontSize, textScaleFactor;
+  final double? size,
+      height,
+      wordSpacing,
+      minFontSize,
+      maxFontSize,
+      textScaleFactor;
   final TextOverflow? textOverflow;
   final Locale? locale;
   final FontWeight? fontWeight;
@@ -69,7 +74,10 @@ class CustomText extends StatelessWidget {
               textDirection: textDirection ?? TextDirection.ltr,
               style: textStyle ?? _textStyle(context),
               softWrap: true,
-              textAlign: textAlign ?? (Localizations.localeOf(context).languageCode == 'ar' ? TextAlign.right : TextAlign.left),
+              textAlign: textAlign ??
+                  (Localizations.localeOf(context).languageCode == 'ar'
+                      ? TextAlign.right
+                      : TextAlign.left),
             )
           : Text(
               text,
@@ -80,7 +88,10 @@ class CustomText extends StatelessWidget {
               maxLines: maxLines,
               textScaler: TextScaler.linear(textScaleFactor ?? 1),
               textWidthBasis: textWidthBasis,
-              textAlign: textAlign ?? (Localizations.localeOf(context).languageCode == 'ar' ? TextAlign.right : TextAlign.left),
+              textAlign: textAlign ??
+                  (Localizations.localeOf(context).languageCode == 'ar'
+                      ? TextAlign.right
+                      : TextAlign.left),
             ),
     );
   }
