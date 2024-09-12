@@ -31,10 +31,10 @@ class CustomText extends StatelessWidget {
   final List<double>? presetFontSizes;
 
   final TextWidthBasis? textWidthBasis;
-
+  
   const CustomText(
+    this.text,
       {super.key,
-      required this.text,
       this.color,
       this.fontFamily,
       this.size,

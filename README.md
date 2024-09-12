@@ -1,14 +1,14 @@
-## CustomText
+## CustomSizableText
 
 This package is simplifying the text widget and make it flexible and auto sized.
 
-By Using [auto_size_text](https://pub.dev/packages/auto_size_text) allowed text to be auto sized.
+By Using [auto_size_text](https://pub.dev/packages/auto_size_text) which allows text to be auto sized.
 
 ## Getting started
 Add package to pubspec.yaml
 ``` yaml
     dependencies:
-      custom_sizable_text: ^1.1.5
+      custom_sizable_text: <latest-version>
 ```
 ## Usage
 
