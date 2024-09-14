@@ -37,6 +37,9 @@ class CustomText extends StatelessWidget {
 
   /// - [textOverflow] is the overflow of the text - TextOverflow.ellipsis,  TextOverflow.clip,  TextOverflow.fade etc.
   final TextOverflow? textOverflow;
+
+  ///Used to select a font when the same Unicode character can be rendered differently, depending on the locale.
+  /// It's rarely necessary to set this property. By default its value is inherited from the enclosing app with Localizations.localeOf(context).
   final Locale? locale;
 
   /// - [fontWeight] is the weight of the text - FontWeight.bold,  FontWeight.normal etc.
@@ -50,7 +53,9 @@ class CustomText extends StatelessWidget {
 
   /// - [textStyle] is the style of the text like(color, fontSize, fontWeight) etc.
   final TextStyle? textStyle;
-  final TextDecoration? textDecoration;
+
+  ///[shadows]
+  ///used to set shadow for the text
   final List<Shadow>? shadows;
 
   /// - [textType] is the type of the text - TextType.autoSized,  TextType.normal etc.
@@ -81,7 +86,6 @@ class CustomText extends StatelessWidget {
       this.padding,
       this.fontWeight,
       this.locale,
-      this.textDecoration,
       this.textOverflow,
       this.height,
       this.wordSpacing,
@@ -112,7 +116,10 @@ class CustomText extends StatelessWidget {
               textDirection: textDirection ?? TextDirection.ltr,
               style: textStyle ?? _textStyle(context),
               softWrap: true,
-              textAlign: textAlign ?? (Localizations.localeOf(context).languageCode == 'ar' ? TextAlign.right : TextAlign.left),
+              textAlign: textAlign ??
+                  (Localizations.localeOf(context).languageCode == 'ar'
+                      ? TextAlign.right
+                      : TextAlign.left),
             )
           : Text(
               text,
@@ -123,13 +130,16 @@ class CustomText extends StatelessWidget {
               maxLines: maxLines,
               textScaler: TextScaler.linear(textScaleFactor ?? 1),
               textWidthBasis: textWidthBasis,
-              textAlign: textAlign ?? (Localizations.localeOf(context).languageCode == 'ar' ? TextAlign.right : TextAlign.left),
+              textAlign: textAlign ??
+                  (Localizations.localeOf(context).languageCode == 'ar'
+                      ? TextAlign.right
+                      : TextAlign.left),
             ),
     );
   }
 
   _textStyle(BuildContext context) => TextStyle(
-      decoration: textDecoration ?? TextDecoration.none,
+      decoration: TextDecoration.none,
       color: color ?? Theme.of(context).textTheme.bodyLarge!.color,
       decorationColor: color ?? Theme.of(context).textTheme.bodyLarge!.color,
       fontFamily: fontFamily,
