@@ -28,7 +28,7 @@ If there is any problem with the new version, please use the previous version
 ```dart
     Widget createText(String message,{Color? color})=>
  CustomText(
-          text: message,
+          message,
           size: 20,
           color: color ,//default is black
           fontWeight: FontWeight.w600,
@@ -40,7 +40,7 @@ If there is any problem with the new version, please use the previous version
 - You can make text not sizable by change `textType`
 ```dart
   CustomText(
-        text:"Hello World"
+       "Hello World"
         size:15,
         color:Colors.black,
         fontWeight: FontWeight.w600,
@@ -57,7 +57,7 @@ SizedBox(
     height:  100,
     width:   200,
     child:  CustomText(
-            text:"Hello World"
+            "Hello World"
             size:15,
             color:Colors.black,
             fontWeight: FontWeight.w600,
@@ -69,5 +69,5 @@ SizedBox(
 
 ### Example
 
-[example demo](https://github.com/ElGenius-developer/custom_sizable_text/tree/main/example/)
+[example demo](https://github.com/ElGenius-developer/custom_sizable_text/tree/main/example/lib/main.dart)
 

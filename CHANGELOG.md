@@ -13,3 +13,15 @@
 
 * add comment to the code.
 * update version.
+
+## 1.1.5+4
+
+* Update example .
+
+## 1.1.5+5
+
+* Update package version 
+* Add some comments.
+
+## 1.1.5+6
+* Update README.md to show new example of the package
