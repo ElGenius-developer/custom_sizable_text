@@ -14,7 +14,7 @@ Add package to pubspec.yaml
 ### Add the following imports to your Dart code
 
 ```dart
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:custom_sizable_text/custom_sizable_text.dart';
 ```
 
 
