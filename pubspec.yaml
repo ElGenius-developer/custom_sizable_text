@@ -1,6 +1,6 @@
 name: custom_sizable_text
 description: This package is simplifying the text widget and make it flexible and auto sized. By Using auto_size_text allowed text to be auto sized.
-version: 1.1.5+6
+version: 1.1.5+7
 homepage: https://github.com/ElGenius-developer/custom_sizable_text
 repository: https://github.com/ElGenius-developer/custom_sizable_text
 
